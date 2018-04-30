@@ -6,8 +6,8 @@ body {
 #RoundCount {
     font-size: 72px;
     line-height: 2px;
-    color: orange;
     font-family: monospace;
+    color: rgb(96, 20, 167);
 }
 h4 {
     color: rgb(96, 20, 167);
