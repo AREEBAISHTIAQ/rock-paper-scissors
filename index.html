@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="https://fonts.google.com/?selection.family=Lobster">
+    <link href="style.css" type="text/css" rel="stylesheet" >
+  <meta charset ="UTF-8">
+  </head>
+  
+<body>
+  <h4>Rounds Played:</h4>
+  <h3 id="RoundCount">0</h3>
+  <div class="container"> 
+  <div class="result">
+    <h2>Player Score: </h2>
+    <h2 id="PlayerResult">0</h2>
+    <h2>Computer Score</h2>
+    <h2 id="ComputerResult">0</h2>
+    <h3 id="ScoreBoard">Player, Take your turn!</h3>
+  </div>
+<h2>choose your weapon:</h2>
+  <button id="rock">Rock</button>
+  <button id="paper">Paper</button>
+  <button id="scissor">Scissors</button>
+</div>
+  <script>
+
+      var playerScore = 0;
+      var computerScore = 0;
+      var roundCount = 0;
+    
+      function computerPlay(){
+          let randomNum = Math.floor((Math.random()*3)+1);
+          return randomNum;
+      }
+    
+    
+    
+      function playerChoice(pChoice, computerPlay) {
+        cChoice = computerPlay();
+        if (pChoice > cChoice) {
+          playerScore++;
+          document.getElementById("PlayerResult").innerText = playerScore.toString();
+          document.getElementById("ScoreBoard").innerText = "You Won!";
+        }
+        else if (pChoice < cChoice) {
+          computerScore++;
+          document.getElementById("ComputerResult").innerText = computerScore.toString();
+          document.getElementById("ScoreBoard").innerText = "You Lost!";
+        }
+        else if (pChoice === cChoice) {
+          document.getElementById("ScoreBoard").innerText = "It's a tie!";
+        }
+        roundCount++;
+        document.getElementById("RoundCount").innerText = roundCount;
+        if (roundCount > 4) {
+          document.getElementById("ScoreBoard").innerText = (playerScore > computerScore) ? "You Won the Game!!!" : (computerScore > playerScore) ? "you lose the game..." : "Oh... It was a Draw!!!";
+          
+          roundCount = 0;
+          playerScore = 0;
+          computerScore = 0;
+          document.getElementById("RoundCount").innerText = "0";
+          document.getElementById("ComputerResult").innerText = "0";
+          document.getElementById("PlayerResult").innerText = "0";
+        }
+      }
+    
+      document.getElementById("paper").onclick = () => {playerChoice(1,computerPlay)};
+      document.getElementById("rock").onclick = () => {playerChoice(2,computerPlay)};
+      document.getElementById("scissor").onclick = () => {playerChoice(3,computerPlay)};
+      </script>
+</body>
+</html>
+
+
